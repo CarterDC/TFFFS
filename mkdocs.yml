@@ -1,0 +1,41 @@
+site_name: Doc perso
+theme:
+  name: material
+  logo: assets/lemur.jpg
+  font:
+    text: Inter
+    code: Fira Code
+  palette:
+    # Dark Mode
+    - scheme: slate
+      toggle:
+        icon: material/weather-sunny
+        name: Dark mode
+      primary: indigo
+      accent: amber
+
+    # Light Mode
+    - scheme: default
+      toggle:
+        icon: material/weather-night
+        name: Light mode
+      primary: blue
+      accent: deep orange
+  features:
+      # - toc.integrate  # Ensures TOC appears inside the navigation sidebar
+      - navigation.sections  # Organizes content better
+      - navigation.instant  # Faster browsing
+      - content.code.copy  # Enables "Copy" button on code blocks
+markdown_extensions:
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences
+nav:
+  - Home: index.md
+  - Pattern: pattern-fr.md
+  - Cheat Sheet: cheat_sheet.md
+  - Home Server Setup Guide: homeserver/index.md
