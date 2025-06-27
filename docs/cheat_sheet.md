@@ -155,3 +155,20 @@ todo : à refaire
   Hidden content here!
 </details>
 ---
+
+## 11. Other tests
+
+### Output:
+
+# Welcome to my Tooltip Test
+
+This is some text with a word that has a **native tooltip**{ title="This is the tooltip text that appears when you hover." }.
+
+This is another example, on an **entire sentence**{ title="You can put longer descriptions here. It just shows up as a simple text popup from the browser." }.
+
+This is some text with a word that has a styled tooltip. [^1]
+
+Another sentence with an important concept. [^2]
+
+[^1]: This is the **content** of the styled tooltip. It can include _basic Markdown_ formatting.
+[^2]: This is the **second** tooltip.
