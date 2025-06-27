@@ -22,22 +22,29 @@ theme:
       primary: blue
       accent: deep orange
   features:
+    # Add features you want. `content.code.annotations` is specifically for code blocks.
+    # It's not the one for general text annotations/tooltips.
+    # - navigation.tabs
+    # - toc.integrate
 
 markdown_extensions:
   - attr_list
   - md_in_html
   - admonition
-  - pymdownx.details
-  - pymdownx.superfences
+  - pymdownx.details      # <--- Keep this enabled
+  - pymdownx.superfences  # <--- Keep this enabled
   - pymdownx.highlight:
       anchor_linenums: true
       line_spans: __span
       pygments_lang_class: true
   - pymdownx.inlinehilite
-  # THE KEY EXTENSION FOR ANNOTATIONS:
-  - material.extensions.annotations # <--- This is the new, correct way!
+  # No material.extensions.annotations here!
+  #- pymdownx.snippets:
+  #    auto_append:
+  #      - includes/abbreviations.md
 
 nav:
   - Home: index.md
   - Pattern: pattern-fr.md
   - Cheat Sheet: cheat_sheet.md
+  - Other Tests: test.md
