@@ -7,13 +7,18 @@ Let's see what we can do with these new toys.
 ## 1. Headings
 
 ### Syntax:
-* ```# Heading 1```    
-* ```## Heading 2```  
-* ```### Heading 3```
+```
+# Heading 1    
+## Heading 2  
+### Heading 3
+```
 
 ### Output:
-*note : output of a level 1 heading at this point would f. up the table of content*
- 
+
+!!! note     
+    *This is an image ; output of a level 1 heading at this point would f. up the table of content*
+
+![headings](assets/headings_01.png)
 
 ---
 
@@ -76,9 +81,9 @@ Let's see what we can do with these new toys.
 
 ### Syntax:
 - ```[Displayed Text](Actual link)```
-- ```[Visit Google](https://www.google.com)```
-- ```[Visit other file](otherFile.md)```
-- ```[Visit other section](myFile.md#other-section)```
+- ```[Visit Google](https://www.google.com)``` *(link to a website)*
+- ```[Return to Index](index.md)``` *(link to another file)*
+- ```[Visit 'Line Break' section](cheat_sheet.md#2-line-break)``` *(link to a specific header in a file)*
 
 ### Output:
 - [Visit Google](https://www.google.com)
@@ -91,9 +96,11 @@ Let's see what we can do with these new toys.
 
 ### Syntax:
 - ```![Alt text](Image link)```
+- ```![dead link](http://unreacheable.com/nopic.png)```
+- ```![random local lemur](assets/lemur.jpg)```
 
 ### Output:
-- ![dead link]()
+- ![dead link](http://unreacheable.com/nopic.png)
 - ![random local lemur](assets/lemur.jpg)
 
 ---
@@ -101,18 +108,34 @@ Let's see what we can do with these new toys.
 ## 7. Code Blocks
 
 ### Syntax:
-- This is ``` ` ```inline code``` ` ``` (back tick : ctrl + alt + 7)
-- This is multi-line code block
-TODO : use code blocks to write syntax examples
-- Lexers : ps1, Bash, [etc...](https://pygments.org/docs/lexers/#pygments.lexers.markup.MarkdownLexer) 
-### Output:
-- This is `inline code` 
+This is ``` ` ```inline code``` ` ``` in the middle of a sentence. (back tick : ctrl + alt + 7)
+````
 ```
 This is  
     multi-line  
     code block
 ```
-``` bash title="My Title Here"
+````
+````
+``` python title="Code block with syntax highlighting"
+print("Hello, World!")
+```
+````
+!!! note ""  
+    Lexers list : ps1, Bash, md, python, [etc...](https://pygments.org/docs/lexers/#pygments.lexers.markup.MarkdownLexer) 
+
+***TODO : Add example of code block with line highlighting.***
+
+### Output:
+This is `inline code` in the middle of a sentence.  
+
+```
+This is  
+    multi-line  
+    code block
+```
+
+``` python title="Code block with syntax highlighting"
 print("Hello, World!")
 ```
 
@@ -121,7 +144,7 @@ print("Hello, World!")
 ## 8. Tables
 
 ### Syntax:
-todo : à refaire
+***TODO : redo section + include tabs***
 ### Output:
 | Column 1 | Column 2 |
 |-|-|
@@ -139,36 +162,101 @@ todo : à refaire
 ---
 
 
-## 10. Collapsible Sections 
+## 10. Admonitions & Collapsible Sections 
 
 ### Syntax:
+
+**List of admonition tags** : *note, abstract, info, tip, success, question, warning, failure, danger, bug, example and quote*.  
+
 ``` md title="Markdown"
+!!! note ""
+    No title means no icon, color stays though.  
+    But don'ton't forget the quotes.
+```
+
+``` md title="Markdown"
+??? warning "No title gets an ugly result in collapsibles"
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+```
+
+``` md title="HTML"
 <details>
   <summary>Click to expand</summary>
-  Hidden content here!
+  Using HTML !
 </details>
 ```
 
+
 ### Output:
+
+!!! note ""
+    No title means no icon, color stays though.  
+    But don't forget the quotes.
+
+??? warning "No title gets an ugly result in collapsibles"
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+
 <details>
   <summary>Click to expand</summary>
-  Hidden content here!
+  Using HTML !
 </details>
+
 ---
 
-## 11. Other tests
+## 11. Tooltips & Annotations
+
+### Syntax:
+
+```md title="Simple hover tooltip"
+This tooltip example uses the *title attribute*{ title=  
+ "However it necessitates an extra css rule to get the underline and mouse cursor."  
+ }.
+```
+```md title="Single annotation"
+Lorem ipsum dolor sit amet, (1) consectetur adipiscing elit.
+{ .annotate }
+
+1. I'm an annotation! I can contain `code`, __formatted
+    text__, images, ... basically anything that can be expressed in Markdown.
+```
+```md title="Annotations in a list requiere the use of HTML and the attr_list extension"
+<div class="annotate" markdown>
++ Etiam laoreet mattis quam eget vehicula. (1)
++ In nunc sem, bibendum in ante a (2), ultrices iaculis dolor.
+</div>
+
+1. I'm another annotation ! I can contain `code`, __formatted
+    text__, images, ... basically anything that can be expressed in Markdown.
+2.  I'm an annotation too !
+```
+!!! warning "Correct placement for annotations"
+    Material for Mkdocs will try and hide the annotations.  
+    Therefore they must always be placed in the last position in a bloc (end of section, end of page).  
+    Everything after will also be hidden.
 
 ### Output:
 
-# Welcome to my Tooltip Test
+This tooltip example uses the *title attribute*{ title="However it necessitates an extra css rule to get the underline and mouse cursor." }.
 
-This is some text with a word that has a **native tooltip**{ title="This is the tooltip text that appears when you hover." }.
 
-This is another example, on an **entire sentence**{ title="You can put longer descriptions here. It just shows up as a simple text popup from the browser." }.
+Lorem ipsum dolor sit amet, (1) consectetur adipiscing elit.
+{ .annotate }
 
-This is some text with a word that has a styled tooltip. [^1]
+1. I'm an annotation ! I can contain `code`, __formatted
+    text__, images, ... basically anything that can be expressed in Markdown.
 
-Another sentence with an important concept. [^2]
+**Annotations within a list :** 
+<div class="annotate" markdown>
++ Etiam laoreet mattis quam eget vehicula. (1)
++ In nunc sem, bibendum in ante a (2), ultrices iaculis dolor.
+</div>
 
-[^1]: This is the **content** of the styled tooltip. It can include _basic Markdown_ formatting.
-[^2]: This is the **second** tooltip.
+1. I'm another annotation ! I can contain `code`, __formatted
+    text__, images, ... basically anything that can be expressed in Markdown.
+2.  I'm an annotation too !
+
+---
+
+## 12. Icons & Emojis
+
+Coming soon:material-trademark: <-- this is an icon :wink:

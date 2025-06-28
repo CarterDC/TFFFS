@@ -1,10 +1,12 @@
-site_name: Doc perso
+site_name: TFFFS
 theme:
   name: material
-  logo: assets/lemur.jpg
+  logo: assets/lemur.png
   font:
     text: Inter
     code: Fira Code
+  icon:
+    annotation: material/information
   palette:
     # Dark Mode
     - scheme: slate
@@ -22,29 +24,40 @@ theme:
       primary: blue
       accent: deep orange
   features:
-    # Add features you want. `content.code.annotations` is specifically for code blocks.
-    # It's not the one for general text annotations/tooltips.
-    # - navigation.tabs
-    # - toc.integrate
-
+    - navigation.tabs
+    - navigation.sections
+    - navigation.top
+    #- toc.integrate
+    - content.code.annotate
+    - content.code.copy
+extra_css:
+  - styles/extra.css # actually located in docs/styles/
 markdown_extensions:
   - attr_list
   - md_in_html
   - admonition
-  - pymdownx.details      # <--- Keep this enabled
-  - pymdownx.superfences  # <--- Keep this enabled
+  - pymdownx.details      
+  - pymdownx.superfences  
   - pymdownx.highlight:
       anchor_linenums: true
       line_spans: __span
       pygments_lang_class: true
   - pymdownx.inlinehilite
-  # No material.extensions.annotations here!
+  - pymdownx.snippets
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
   #- pymdownx.snippets:
   #    auto_append:
   #      - includes/abbreviations.md
 
 nav:
   - Home: index.md
-  - Pattern: pattern-fr.md
-  - Cheat Sheet: cheat_sheet.md
-  - Other Tests: test.md
+  - Home Server Setup:
+    - Intro: homeserver/index.md
+    - SSH: homeserver/ssh.md
+    - Samba: homeserver/samba.md
+  - Helpers:
+    - Pattern: pattern-fr.md
+    - Cheat Sheet: cheat_sheet.md
+    - Other Tests: test.md

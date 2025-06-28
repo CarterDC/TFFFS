@@ -1,0 +1,8 @@
+.md-annotation__index::after {
+	background-color: #2196f3; /* Material Blue 500 */
+}
+[title] {
+  text-decoration: underline dotted #888;
+  cursor: help;
+  text-underline-offset: 2px;
+}
